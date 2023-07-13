@@ -1,10 +1,12 @@
 'use client';
 
 import { Navbar, Dropdown, Button, Link, Text } from "@nextui-org/react";
+import { AcmeLogo } from "./AcmeLogo.js";
+import { icons } from "./Icons.js";
 
-const Navbar = () => {
+const NavbarComp = () => {
     return(
-        <Navbar isBordered variant="sticky">
+<Navbar isBordered variant="sticky">
 <Navbar.Brand>
   <AcmeLogo />
   <Text b color="inherit" hideIn="xs">
@@ -104,7 +106,7 @@ const Navbar = () => {
 <Navbar.Content>
   <Navbar.Link color="inherit" href="#">
     Login
-  </Navbar.Link>
+  </Navbar.Link> 
   <Navbar.Item>
     <Button auto flat as={Link} href="#">
       Sign Up
@@ -115,4 +117,4 @@ const Navbar = () => {
     )
 }
 
-export default Navbar;
+export default NavbarComp;
