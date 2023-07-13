@@ -6,7 +6,8 @@ import { icons } from "./Icons.js";
 
 const NavbarComp = () => {
     return(
-<Navbar isBordered variant="sticky">
+      <div className=" bg-white">
+        <Navbar isBordered variant="sticky">
 <Navbar.Brand>
   <AcmeLogo />
   <Text b color="inherit" hideIn="xs">
@@ -114,6 +115,7 @@ const NavbarComp = () => {
   </Navbar.Item>
 </Navbar.Content>
 </Navbar>
+      </div>
     )
 }
 
