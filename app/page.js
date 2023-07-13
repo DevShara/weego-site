@@ -2,6 +2,7 @@
 
 import Banner from '@/components/Banner';
 import NavbarComp from '@/components/Navbar';
+import Products from '@/components/Products';
 import Image from 'next/image'
 
 export default function Home() {
@@ -9,6 +10,7 @@ export default function Home() {
     <main className="">
       <NavbarComp />
       <Banner />
+      <Products />
     </main>
   )
 }
