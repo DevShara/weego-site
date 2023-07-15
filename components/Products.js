@@ -1,9 +1,67 @@
 'use client';
+import { Card, Grid, Row, Text } from "@nextui-org/react";
 
 import { Tabs } from 'flowbite-react';
 import { HiBookOpen } from 'react-icons/hi';
+import Category from "./Category";
+import { useEffect, useState } from "react";
 
 export default function Products() {
+  const list = [
+    {
+      title: "WEEGO A4 BOOK CR 40PGS (=) SINGLE RULED",
+      img: "/images/fruit-1.jpeg",
+      price: "Rs.145.00",
+      category: "cr"
+    },
+    {
+      title: "WEEGO B5 BOOK CR 40PGS (=) SINGLE RULED",
+      img: "/images/fruit-1.jpeg",
+      price: "Rs.145.00",
+      category: "b5"
+    }
+  ];
+
+  const [products, setProducts] = useState({});
+
+  let categories = [];
+
+  list.forEach(item => {
+    categories.push(item.category);
+  });
+
+
+
+
+  function loadData(){
+    const data = {}
+    categories.forEach((category) => {
+      data[category] = []
+      list.forEach(item => {
+        if(item.category == category){
+          data[category].push(item);
+        }
+
+      });
+
+    
+    })
+    setProducts(data);
+
+  }
+
+  useEffect(() => {
+    loadData()
+
+
+  },[]);
+
+  console.log(products)
+
+
+
+ 
+
   return (
     <div className='container mx-auto p-8'>
       <Tabs.Group
@@ -11,82 +69,19 @@ export default function Products() {
       style="pills"
       className=' mx-auto '
     >
-       <Tabs.Item
-        active
-        title="All"
-      >
-        <p>
-          This is
-          <span className="font-medium text-gray-800 dark:text-white">
-            Profile tab's associated content
-          </span>
-          .
-          Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
-          control the content visibility and styling.
-        </p>
-      </Tabs.Item>
-      <Tabs.Item
-        active
-        title="CR"
-      >
-        <p>
-          This is
-          <span className="font-medium text-gray-800 dark:text-white">
-            Profile tab's associated content
-          </span>
-          .
-          Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
-          control the content visibility and styling.
-        </p>
-      </Tabs.Item>
-      <Tabs.Item
-        title="A5"
-      >
-        <p>
-          This is
-          <span className="font-medium text-gray-800 dark:text-white">
-            Dashboard tab's associated content
-          </span>
-          .
-          Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
-          control the content visibility and styling.
-        </p>
-      </Tabs.Item>
-      <Tabs.Item
-        title="B5"
-      >
-        <p>
-          This is
-          <span className="font-medium text-gray-800 dark:text-white">
-            Settings tab's associated content
-          </span>
-          .
-          Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
-          control the content visibility and styling.
-        </p>
-      </Tabs.Item>
-      <Tabs.Item
-        title="Drawing"
-      >
-        <p>
-          This is
-          <span className="font-medium text-gray-800 dark:text-white">
-            Contacts tab's associated content
-          </span>
-          .
-          Clicking another tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to
-          control the content visibility and styling.
-        </p>
-      </Tabs.Item>
-      <Tabs.Item
-        disabled
-        title="Disabled"
-      >
-        <p>
-          Disabled content
-        </p>
-      </Tabs.Item>
+      { categories.map(category => (
+        <Tabs.Item active title={category}>
+          <Category data={products[category]} />
+          {/* TODO: get data by a proper way */}
+        </Tabs.Item>
+      ))}
+
+      
+       
+     
     </Tabs.Group>
+
+    
     </div>
   )
 }
