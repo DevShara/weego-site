@@ -8,8 +8,8 @@ import Image from 'next/image'
 export default function Home() {
   return (
     <main className="">
-      {/* <NavbarComp />
-      <Banner /> */}
+      <NavbarComp />
+      <Banner />
       <Products />
     </main>
   )

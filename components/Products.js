@@ -12,26 +12,47 @@ export default function Products() {
       title: "WEEGO A4 BOOK CR 40PGS (=) SINGLE RULED",
       img: "/images/fruit-1.jpeg",
       price: "Rs.145.00",
-      category: "cr"
+      category: "CR Books"
     },
     {
-      title: "WEEGO B5 BOOK CR 40PGS (=) SINGLE RULED",
+      title: "WEEGO B5 BOOK 80PGS (=) SINGLE RULED",
       img: "/images/fruit-1.jpeg",
       price: "Rs.145.00",
-      category: "b5"
+      category: "B5 Books"
+    },
+    {
+      title: "WEEGO B5 BOOK 120PGS (=) SINGLE RULED",
+      img: "/images/fruit-1.jpeg",
+      price: "Rs.145.00",
+      category: "B5 Books"
+    },
+    {
+      title: "WEEGO A5 BOOK CR 40PGS (=) SINGLE RULED",
+      img: "/images/fruit-1.jpeg",
+      price: "Rs.145.00",
+      category: "A5 Books"
+    },
+    {
+      title: "WEEGO A5BOOK CR 80PGS (=) SINGLE RULED",
+      img: "/images/fruit-1.jpeg",
+      price: "Rs.145.00",
+      category: "A5 Books"
+    },
+    {
+      title: "WEEGO A5BOOK CR 80PGS (=) SINGLE RULED",
+      img: "/images/fruit-1.jpeg",
+      price: "Rs.145.00",
+      category: "A5 Books"
     }
   ];
 
   const [products, setProducts] = useState({});
 
-  let categories = [];
-
-  list.forEach(item => {
-    categories.push(item.category);
-  });
-
-
-
+  let categories = [
+    ...new Set(list.map(item => {
+      return item.category;
+    }))
+  ];
 
   function loadData(){
     const data = {}
@@ -43,24 +64,16 @@ export default function Products() {
         }
 
       });
-
     
     })
     setProducts(data);
-
   }
 
   useEffect(() => {
     loadData()
-
-
   },[]);
 
   console.log(products)
-
-
-
- 
 
   return (
     <div className='container mx-auto p-8'>
